@@ -32,6 +32,16 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
     );
   }
 
+  // Safely access nested properties with defaults
+  const destination = data.destination || 'Your Destination';
+  const overview = data.overview || 'Plan your perfect trip';
+  const duration = data.dates?.duration || data.itinerary?.length || 0;
+  const bestTimeToVisit = data.bestTimeToVisit || 'Check weather before traveling';
+  const packingList = data.packingList || [];
+  const localTips = data.localTips || [];
+  const itinerary = data.itinerary || [];
+  const weather = data.weather || {};
+
   return (
     <motion.div
       className="w-full max-w-6xl mx-auto space-y-8"
@@ -46,13 +56,13 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
           initial={{ y: -20 }}
           animate={{ y: 0 }}
         >
-          {data.destination}
+          {destination}
         </motion.h1>
-        <p className="text-lg md:text-xl opacity-90 mb-6">{data.overview}</p>
+        <p className="text-lg md:text-xl opacity-90 mb-6">{overview}</p>
         <div className="flex flex-wrap gap-4 text-sm md:text-base">
           <div className="flex items-center gap-2">
             <Calendar className="w-5 h-5" />
-            <span>{data.dates.duration} days</span>
+            <span>{duration} days</span>
           </div>
         </div>
       </div>
@@ -70,26 +80,28 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
             <Sun className="w-5 h-5 text-yellow-500" />
             Weather
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">{data.bestTimeToVisit}</p>
+          <p className="text-gray-600 dark:text-gray-400">{bestTimeToVisit}</p>
         </motion.div>
 
         {/* Packing */}
-        <motion.div
-          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-            <Briefcase className="w-5 h-5 text-purple-500" />
-            Pack These
-          </h3>
-          <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-            {data.packingList.slice(0, 3).map((item: string, idx: number) => (
-              <li key={idx}>• {item}</li>
-            ))}
-          </ul>
-        </motion.div>
+        {packingList.length > 0 && (
+          <motion.div
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+              <Briefcase className="w-5 h-5 text-purple-500" />
+              Pack These
+            </h3>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              {packingList.slice(0, 3).map((item: string, idx: number) => (
+                <li key={idx}>• {item}</li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
       </div>
 
       {/* Day by Day Itinerary */}
@@ -99,9 +111,9 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
           Your Day-by-Day Adventure
         </h2>
         <div className="space-y-6">
-          {data.itinerary.map((day: any, index: number) => {
+          {itinerary.map((day: any, index: number) => {
             const WeatherIcon = day.weather ? weatherIcons[day.weather.toLowerCase()] || weatherIcons.default : Sun;
-            const dayWeather = data.weather[day.day];
+            const dayWeather = weather[day.day];
 
             return (
               <motion.div
@@ -115,8 +127,8 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
                 <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-2xl font-bold">Day {day.day}: {day.theme}</h3>
-                      <p className="opacity-90">{day.date}</p>
+                      <h3 className="text-2xl font-bold">Day {day.day}{day.theme ? `: ${day.theme}` : ''}</h3>
+                      {day.date && <p className="opacity-90">{day.date}</p>}
                     </div>
                     {dayWeather && (
                       <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg">
@@ -149,7 +161,7 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
       </div>
 
       {/* Local Tips */}
-      {data.localTips && data.localTips.length > 0 && (
+      {localTips && localTips.length > 0 && (
         <motion.div
           className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-8"
           initial={{ y: 20, opacity: 0 }}
@@ -160,7 +172,7 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
             Local Tips
           </h3>
           <ul className="space-y-2">
-            {data.localTips.map((tip: string, idx: number) => (
+            {localTips.map((tip: string, idx: number) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="text-yellow-600 mt-1">💡</span>
                 <span className="text-gray-700 dark:text-gray-300">{tip}</span>
