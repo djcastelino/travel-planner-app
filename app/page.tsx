@@ -15,7 +15,7 @@ export default function Home() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://workflowly.online/webhook-test/travel-planner', {
+      const response = await fetch('https://workflowly.online/webhook/travel-planner', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
