@@ -54,15 +54,11 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
             <Calendar className="w-5 h-5" />
             <span>{data.dates.duration} days</span>
           </div>
-          <div className="flex items-center gap-2">
-            <DollarSign className="w-5 h-5" />
-            <span>${data.budgetBreakdown.accommodation + data.budgetBreakdown.food + data.budgetBreakdown.activities} budget</span>
-          </div>
         </div>
       </div>
 
       {/* Quick Info Cards */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {/* Weather Summary */}
         <motion.div
           className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
@@ -77,39 +73,12 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
           <p className="text-gray-600 dark:text-gray-400">{data.bestTimeToVisit}</p>
         </motion.div>
 
-        {/* Budget Breakdown */}
-        <motion.div
-          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-            <DollarSign className="w-5 h-5 text-green-500" />
-            Budget
-          </h3>
-          <div className="space-y-1 text-sm">
-            <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Accommodation</span>
-              <span className="font-semibold">${data.budgetBreakdown.accommodation}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Food</span>
-              <span className="font-semibold">${data.budgetBreakdown.food}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Activities</span>
-              <span className="font-semibold">${data.budgetBreakdown.activities}</span>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Packing */}
         <motion.div
           className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
         >
           <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
             <Briefcase className="w-5 h-5 text-purple-500" />
@@ -172,12 +141,6 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
                   {day.evening && (
                     <ActivityCard activity={day.evening} timeOfDay="Evening" icon="🌙" />
                   )}
-
-                  {/* Daily Budget */}
-                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                    <span className="text-gray-600 dark:text-gray-400 font-medium">Daily Total</span>
-                    <span className="text-xl font-bold text-green-600">${day.dailyBudget}</span>
-                  </div>
                 </div>
               </motion.div>
             );
@@ -231,7 +194,6 @@ function ActivityCard({ activity, timeOfDay, icon }: { activity: any; timeOfDay:
           </h4>
           <p className="text-xl font-semibold text-gray-800 dark:text-gray-200">{activity.activity}</p>
         </div>
-        <span className="text-green-600 font-bold">${activity.cost}</span>
       </div>
       <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
         <div className="flex items-center gap-2">

@@ -97,11 +97,11 @@ export default function Home() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-pink-100 dark:bg-pink-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">💰</span>
+                  <span className="text-3xl">🗺️</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2">Budget Friendly</h3>
+                <h3 className="font-bold text-lg mb-2">Smart Planning</h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Get detailed budget breakdowns and cost estimates
+                  Optimized routes and detailed day-by-day itineraries
                 </p>
               </div>
             </motion.div>
@@ -112,11 +112,6 @@ export default function Home() {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="py-8 text-center text-gray-600 dark:text-gray-400">
-        <p>Made with ❤️ using AI • Built with Next.js & Gemini</p>
-      </footer>
     </div>
   );
 }

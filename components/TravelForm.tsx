@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, DollarSign, Heart, Sparkles } from 'lucide-react';
+import { MapPin, Calendar, Heart, Sparkles } from 'lucide-react';
 
 interface TravelFormProps {
   onSubmit: (data: TravelFormData) => void;
@@ -13,7 +13,6 @@ export interface TravelFormData {
   destination: string;
   startDate: string;
   endDate: string;
-  budget: number;
   interests: string[];
   travelStyle: string;
 }
@@ -40,7 +39,6 @@ export default function TravelForm({ onSubmit, isLoading }: TravelFormProps) {
     destination: '',
     startDate: '',
     endDate: '',
-    budget: 2000,
     interests: [],
     travelStyle: 'moderate',
   });
@@ -115,27 +113,6 @@ export default function TravelForm({ onSubmit, isLoading }: TravelFormProps) {
               disabled={isLoading}
             />
           </div>
-        </div>
-
-        {/* Budget */}
-        <div>
-          <label className="flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
-            <DollarSign className="w-5 h-5 text-green-500" />
-            Budget (USD)
-          </label>
-          <div className="relative">
-            <span className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 text-lg">$</span>
-            <input
-              type="number"
-              required
-              min="100"
-              value={formData.budget}
-              onChange={(e) => setFormData({ ...formData, budget: parseInt(e.target.value) })}
-              className="w-full pl-12 pr-6 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 transition-all outline-none text-lg"
-              disabled={isLoading}
-            />
-          </div>
-          <p className="text-sm text-gray-500 mt-2">Current: ${formData.budget.toLocaleString()}</p>
         </div>
 
         {/* Interests */}
