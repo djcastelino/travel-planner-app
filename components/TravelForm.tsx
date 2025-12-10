@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Heart, Sparkles } from 'lucide-react';
+import { MapPin, Calendar, Heart } from 'lucide-react';
 
 interface TravelFormProps {
   onSubmit: (data: TravelFormData) => void;
@@ -14,7 +14,6 @@ export interface TravelFormData {
   startDate: string;
   endDate: string;
   interests: string[];
-  travelStyle: string;
 }
 
 const interestOptions = [
@@ -28,19 +27,12 @@ const interestOptions = [
   { value: 'art', label: 'Art & Museums', emoji: '🎨' },
 ];
 
-const travelStyles = [
-  { value: 'budget', label: 'Budget', emoji: '💰' },
-  { value: 'moderate', label: 'Moderate', emoji: '✨' },
-  { value: 'luxury', label: 'Luxury', emoji: '👑' },
-];
-
 export default function TravelForm({ onSubmit, isLoading }: TravelFormProps) {
   const [formData, setFormData] = useState<TravelFormData>({
     destination: '',
     startDate: '',
     endDate: '',
     interests: [],
-    travelStyle: 'moderate',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -138,35 +130,6 @@ export default function TravelForm({ onSubmit, isLoading }: TravelFormProps) {
                 <div className="text-2xl mb-1">{interest.emoji}</div>
                 <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
                   {interest.label}
-                </div>
-              </motion.button>
-            ))}
-          </div>
-        </div>
-
-        {/* Travel Style */}
-        <div>
-          <label className="flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-            <Sparkles className="w-5 h-5 text-yellow-500" />
-            Travel Style
-          </label>
-          <div className="grid grid-cols-3 gap-4">
-            {travelStyles.map((style) => (
-              <motion.button
-                key={style.value}
-                type="button"
-                onClick={() => setFormData({ ...formData, travelStyle: style.value })}
-                className={`p-4 rounded-xl border-2 transition-all ${
-                  formData.travelStyle === style.value
-                    ? 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/30'
-                    : 'border-gray-200 dark:border-gray-700 hover:border-yellow-300'
-                }`}
-                whileTap={{ scale: 0.95 }}
-                disabled={isLoading}
-              >
-                <div className="text-2xl mb-1">{style.emoji}</div>
-                <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                  {style.label}
                 </div>
               </motion.button>
             ))}
