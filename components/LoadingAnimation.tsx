@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Plane, MapPin, Utensils, Sun, DollarSign, Sparkles } from 'lucide-react';
+import { Globe, Plane, MapPin, Utensils, Sun, Sparkles } from 'lucide-react';
 
 const loadingSteps = [
   { icon: Globe, text: 'Analyzing your destination...', color: 'text-blue-500', duration: 3000 },
@@ -10,7 +10,6 @@ const loadingSteps = [
   { icon: Plane, text: 'Finding best activities...', color: 'text-indigo-500', duration: 3000 },
   { icon: Utensils, text: 'Selecting amazing restaurants...', color: 'text-pink-500', duration: 3000 },
   { icon: Sun, text: 'Checking weather forecast...', color: 'text-yellow-500', duration: 3000 },
-  { icon: DollarSign, text: 'Calculating budget...', color: 'text-green-500', duration: 3000 },
   { icon: Sparkles, text: 'Finalizing your dream trip...', color: 'text-violet-500', duration: 2000 },
 ];
 
