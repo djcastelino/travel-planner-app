@@ -10,8 +10,16 @@ import { Plane } from 'lucide-react';
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [itineraryData, setItineraryData] = useState<any>(null);
+  const [requestInProgress, setRequestInProgress] = useState(false);
 
   const handleFormSubmit = async (formData: TravelFormData) => {
+    // Prevent duplicate requests
+    if (requestInProgress) {
+      console.log('Request already in progress, ignoring duplicate submission');
+      return;
+    }
+
+    setRequestInProgress(true);
     setIsLoading(true);
 
     try {
@@ -33,6 +41,7 @@ export default function Home() {
       setItineraryData({ success: false, error: 'Failed to generate itinerary' });
     } finally {
       setIsLoading(false);
+      setRequestInProgress(false);
     }
   };
 
