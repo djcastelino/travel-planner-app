@@ -18,6 +18,11 @@ const weatherIcons: Record<string, any> = {
 };
 
 export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProps) {
+  // Debug logging
+  console.log('ItineraryDisplay received data:', data);
+  console.log('Itinerary array:', data?.itinerary);
+  console.log('Itinerary length:', data?.itinerary?.length);
+
   if (!data || !data.success) {
     return (
       <div className="text-center py-12">
@@ -35,12 +40,17 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
   // Safely access nested properties with defaults
   const destination = data.destination || 'Your Destination';
   const overview = data.overview || 'Plan your perfect trip';
-  const duration = data.dates?.duration || data.itinerary?.length || 0;
+  const duration = data.dates?.duration || data.itinerary?.length || (data.itinerary && Array.isArray(data.itinerary) ? data.itinerary.length : 0);
   const bestTimeToVisit = data.bestTimeToVisit || 'Check weather before traveling';
   const packingList = data.packingList || [];
   const localTips = data.localTips || [];
-  const itinerary = data.itinerary || [];
+  const itinerary = Array.isArray(data.itinerary) ? data.itinerary : [];
   const weather = data.weather || {};
+
+  console.log('Processed itinerary:', itinerary);
+  console.log('Is itinerary an array?', Array.isArray(itinerary));
+  console.log('Itinerary items:', itinerary.length);
+  console.log('Duration:', duration);
 
   return (
     <motion.div
