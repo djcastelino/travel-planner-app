@@ -140,10 +140,15 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
                       <h3 className="text-2xl font-bold">Day {day.day}{day.theme ? `: ${day.theme}` : ''}</h3>
                       {day.date && <p className="opacity-90">{day.date}</p>}
                     </div>
-                    {dayWeather && (
-                      <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg">
-                        <WeatherIcon className="w-5 h-5" />
-                        <span>{dayWeather.avgTemp}°C</span>
+                    {dayWeather && dayWeather.temp && (
+                      <div className="flex flex-col items-end">
+                        <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg">
+                          <WeatherIcon className="w-5 h-5" />
+                          <span className="font-bold">{dayWeather.temp}°C</span>
+                        </div>
+                        {dayWeather.isHistorical && dayWeather.tempRange && (
+                          <p className="text-xs opacity-75 mt-1">Typical: {dayWeather.tempRange}</p>
+                        )}
                       </div>
                     )}
                   </div>
