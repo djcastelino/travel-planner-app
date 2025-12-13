@@ -124,6 +124,9 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
           {itinerary.map((day: any, index: number) => {
             const WeatherIcon = day.weather?.description ? weatherIcons[day.weather.description.toLowerCase()] || weatherIcons.default : Sun;
             const dayWeather = day.weather || weather[day.day];
+            
+            console.log(`Day ${day.day} weather:`, dayWeather);
+            console.log(`Day ${day.day} has temp:`, dayWeather?.temp);
 
             return (
               <motion.div
