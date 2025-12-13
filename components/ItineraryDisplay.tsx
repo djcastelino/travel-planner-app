@@ -128,13 +128,25 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
             console.log(`Day ${day.day} weather:`, dayWeather);
             console.log(`Day ${day.day} has temp:`, dayWeather?.temp);
 
+            const isUS = data.destination?.toLowerCase().includes('usa') || 
+                         data.destination?.toLowerCase().includes('united states') ||
+                         data.destination?.match(/,\s*[A-Z]{2}$/); // Matches ", NY", ", CA", etc.
+
+            const displayTemp = (celsius: number) => {
+              if (isUS) {
+                return `${Math.round(celsius * 9 / 5 + 32)}°F`;
+              }
+              return `${Math.round(celsius)}°C`;
+            };
+
             return (
               <motion.div
                 key={day.day}
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow"
               >
                 {/* Day Header */}
                 <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6">
@@ -143,14 +155,19 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
                       <h3 className="text-2xl font-bold">Day {day.day}{day.theme ? `: ${day.theme}` : ''}</h3>
                       {day.date && <p className="opacity-90">{day.date}</p>}
                     </div>
-                    {dayWeather && dayWeather.temp && (
+                    {dayWeather && dayWeather.temp !== null && dayWeather.temp !== undefined && (
                       <div className="flex flex-col items-end">
                         <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-lg">
                           <WeatherIcon className="w-5 h-5" />
-                          <span className="font-bold">{dayWeather.temp}°C</span>
+                          <span className="font-bold">
+                            {dayWeather.isHistorical ? 'Typical: ' : ''}
+                            {displayTemp(dayWeather.temp)}
+                          </span>
                         </div>
-                        {dayWeather.isHistorical && dayWeather.tempRange && (
-                          <p className="text-xs opacity-75 mt-1">Typical: {dayWeather.tempRange}</p>
+                        {dayWeather.isHistorical && (
+                          <p className="text-xs opacity-75 mt-1">
+                            {dayWeather.tempRange || 'Historical average'}
+                          </p>
                         )}
                       </div>
                     )}
