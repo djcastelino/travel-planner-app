@@ -35,6 +35,9 @@ export default function Home() {
       });
 
       const data = await response.json();
+      console.log('=== RAW API RESPONSE ===');
+      console.log('Full response:', JSON.stringify(data, null, 2));
+      console.log('First day weather:', data?.itinerary?.[0]?.weather);
       setItineraryData(data);
     } catch (error) {
       console.error('Error:', error);

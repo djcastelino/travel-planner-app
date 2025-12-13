@@ -1,0 +1,106 @@
+{
+    "success": true,
+    "tripId": "trip_1765472488367_g7vh0y8m7",
+    "destination": "Paris, France",
+    "overview": "Indulge in a culinary journey through Paris, exploring its iconic food markets, charming bistros, and world-renowned patisseries.",
+    "bestTimeToVisit": "Late spring (May-June) and early autumn (September-October) offer pleasant weather, fewer crowds, and a vibrant culinary scene. December can be chilly but festive.",
+    "dates": {
+        "duration": 3
+    },
+    "itinerary": [
+        {
+            "day": 1,
+            "date": "Sat, Dec 13, 2025",
+            "theme": "Market Delights and Bistro Classics",
+            "morning": {
+                "activity": "Explore March\u00e9 des Enfants Rouges",
+                "location": "39 Rue de Bretagne, 75003 Paris",
+                "duration": "2-3 hours",
+                "tips": "Arrive early to avoid crowds and sample fresh produce, cheeses, and street food from various international vendors.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=39%20Rue%20de%20Bretagne%2C%2075003%20Paris"
+            },
+            "afternoon": {
+                "activity": "Lunch at a traditional Parisian bistro",
+                "location": "Le Bouillon Chartier (Grands Boulevards)",
+                "duration": "2-3 hours",
+                "tips": "Experience authentic French cuisine at affordable prices. Be prepared for a lively atmosphere and potentially a queue.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Le%20Bouillon%20Chartier%20(Grands%20Boulevards)"
+            },
+            "evening": {
+                "activity": "Cheese and Wine Tasting Experience",
+                "location": "Various specialized shops or wine bars in Le Marais",
+                "duration": "2-3 hours",
+                "tips": "Book a guided tasting to learn about French cheeses and wine pairings. Many venues offer this service.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Various%20specialized%20shops%20or%20wine%20bars%20in%20Le%20Marais"
+            }
+        },
+        {
+            "day": 2,
+            "date": "Sun, Dec 14, 2025",
+            "theme": "Sweet Treats and Culinary Mastery",
+            "morning": {
+                "activity": "Pastry Tour of Saint-Germain-des-Pr\u00e9s",
+                "location": "Various patisseries in Saint-Germain-des-Pr\u00e9s",
+                "duration": "2-3 hours",
+                "tips": "Visit iconic spots like Ladur\u00e9e for macarons and Pierre Herm\u00e9 for unique flavor combinations. Consider a guided tour for curated selections.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Various%20patisseries%20in%20Saint-Germain-des-Pr%C3%A9s"
+            },
+            "afternoon": {
+                "activity": "Cooking Class: French Pastry or Macarons",
+                "location": "Le Cordon Bleu Paris or similar culinary school",
+                "duration": "3-4 hours",
+                "tips": "Pre-book your class well in advance. This is a hands-on experience to learn classic French techniques.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Le%20Cordon%20Bleu%20Paris%20or%20similar%20culinary%20school"
+            },
+            "evening": {
+                "activity": "Dinner at a Michelin-starred restaurant or a highly-rated modern bistro",
+                "location": "Arp\u00e8ge or Septime (reservations essential)",
+                "duration": "3-4 hours",
+                "tips": "Book your table months in advance, especially for highly sought-after restaurants. Dress code may apply.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Arp%C3%A8ge%20or%20Septime%20(reservations%20essential)"
+            }
+        },
+        {
+            "day": 3,
+            "date": "Mon, Dec 15, 2025",
+            "theme": "Market Exploration and Farewell Flavors",
+            "morning": {
+                "activity": "Visit Rue Montorgueil Market Street",
+                "location": "Rue Montorgueil, 75002 Paris",
+                "duration": "2-3 hours",
+                "tips": "Enjoy the bustling atmosphere, sample local produce, and perhaps pick up some edible souvenirs like mustard or confiture.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Rue%20Montorgueil%2C%2075002%20Paris"
+            },
+            "afternoon": {
+                "activity": "Lunch at a traditional Cr\u00eaperie",
+                "location": "Breizh Caf\u00e9 or similar in Le Marais or Latin Quarter",
+                "duration": "2-3 hours",
+                "tips": "Savor both savory galettes (buckwheat cr\u00eapes) and sweet cr\u00eapes. A great option for a lighter, delicious meal.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=Breizh%20Caf%C3%A9%20or%20similar%20in%20Le%20Marais%20or%20Latin%20Quarter"
+            },
+            "evening": {
+                "activity": "Farewell Dinner with a view",
+                "location": "A restaurant with Eiffel Tower views (e.g., Les Ombres)",
+                "duration": "2-3 hours",
+                "tips": "Enjoy a final Parisian meal while admiring the illuminated Eiffel Tower. Book in advance for a window seat.",
+                "mapUrl": "https://www.google.com/maps/search/?api=1&query=A%20restaurant%20with%20Eiffel%20Tower%20views%20(e.g.%2C%20Les%20Ombres)"
+            }
+        }
+    ],
+    "weather": {},
+    "packingList": [
+        "Warm coat",
+        "Scarf, gloves, and hat",
+        "Comfortable walking shoes",
+        "Umbrella or rain jacket",
+        "Adapter for European outlets"
+    ],
+    "localTips": [
+        "Learn a few basic French phrases; locals appreciate the effort.",
+        "Carry a reusable water bottle to refill at public fountains.",
+        "Utilize the Paris Metro for efficient travel between locations.",
+        "Be aware of your surroundings, especially in crowded tourist areas."
+    ],
+    "currencyRates": {},
+    "generatedAt": "2025-12-11T17:01:28.368Z"
+}
