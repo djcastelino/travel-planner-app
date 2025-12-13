@@ -122,8 +122,8 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
         </h2>
         <div className="space-y-6">
           {itinerary.map((day: any, index: number) => {
-            const WeatherIcon = day.weather ? weatherIcons[day.weather.toLowerCase()] || weatherIcons.default : Sun;
-            const dayWeather = weather[day.day];
+            const WeatherIcon = day.weather?.description ? weatherIcons[day.weather.description.toLowerCase()] || weatherIcons.default : Sun;
+            const dayWeather = day.weather || weather[day.day];
 
             return (
               <motion.div
