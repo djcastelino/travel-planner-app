@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Clock, DollarSign, Sun, Cloud, CloudRain, ExternalLink, Calendar, Utensils, Briefcase, Sparkles } from 'lucide-react';
+import { MapPin, Clock, DollarSign, Sun, Cloud, CloudRain, ExternalLink, Calendar, Utensils, Briefcase, Sparkles, Banknote } from 'lucide-react';
 
 interface ItineraryDisplayProps {
   data: any;
@@ -112,6 +112,51 @@ export default function ItineraryDisplay({ data, onReset }: ItineraryDisplayProp
             </ul>
           </motion.div>
         )}
+
+        {/* Currency & Tipping (New) */}
+        <motion.div
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg md:col-span-2 lg:col-span-1"
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+            <Banknote className="w-5 h-5 text-green-500" />
+            Money Matters
+          </h3>
+          
+          {data.currencyRates && Object.keys(data.currencyRates).length > 0 ? (
+            <div className="mb-4 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-100 dark:border-green-800">
+               <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Exchange Rate</p>
+               <p className="text-xl font-bold text-gray-800 dark:text-gray-200">
+                 {/* Fallback display if specific format matches, otherwise dump key/val */}
+                 {data.currencyRates.code ? `1 ${data.currencyRates.base || 'USD'} ≈ ${data.currencyRates.rate} ${data.currencyRates.code}` : 'Rates available'}
+               </p>
+            </div>
+          ) : (
+            <div className="mb-4 text-sm text-gray-500 italic">
+              Currency info not available
+            </div>
+          )}
+
+          <div className="space-y-2">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Traveler Tips</p>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              {/* Filter for money-related tips, or show generic ones if none found */}
+              {localTips.filter((t: string) => t.toLowerCase().match(/(tip|cash|card|money|currency|atm)/)).length > 0 ? (
+                localTips.filter((t: string) => t.toLowerCase().match(/(tip|cash|card|money|currency|atm)/)).slice(0, 3).map((tip: string, idx: number) => (
+                  <li key={idx}>• {tip}</li>
+                ))
+              ) : (
+                <>
+                  <li>• Check current exchange rates</li>
+                  <li>• Inform your bank before travel</li>
+                  <li>• Carry some local cash for small shops</li>
+                </>
+              )}
+            </ul>
+          </div>
+        </motion.div>
       </div>
 
       {/* Day by Day Itinerary */}
